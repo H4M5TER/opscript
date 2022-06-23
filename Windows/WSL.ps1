@@ -1,5 +1,6 @@
-$WSL_HOST = bash.exe -c "ifconfig eth0 | awk '/inet / {print \`$2}'"
+cmd /c "wsl -- sudo service ssh start ; sudo service xrdp start"
 
-# Code Server
-netsh interface portproxy delete v4tov4 listenport=8080 listenaddress=0.0.0.0 protocol=tcp
-netsh interface portproxy add v4tov4 listenport=8080 listenaddress=0.0.0.0 connectport=8080 connectaddress=$WSL_HOST protocol=tcp
+$WSLIP = (wsl -- hostname -I) # better than bash.exe -c "ifconfig eth0 | awk '/inet / {print \`$2}'"
+
+# Forward
+# use netsh int port add v4tov4 port 127.0.0.1
