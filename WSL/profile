@@ -1,5 +1,12 @@
+# Service
+service ssh start
+service xrdp start
+
+# Proxy
 export WINIP=$(awk '/nameserver / {print $2; exit}' /etc/resolv.conf)
+export WSLIP=$(hostname -I)
 export HTTP_PROXY=http://$WINIP:7890
 export HTTPS_PROXY=$HTTP_PROXY
+
 # VcXsrv
 export DISPLAY=$WINIP:0.0
