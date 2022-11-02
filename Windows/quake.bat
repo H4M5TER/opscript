@@ -1,0 +1,1 @@
+cmd /c wt -w _quake --profile "PowerShell (Admin)"

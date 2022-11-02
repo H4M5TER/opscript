@@ -7,6 +7,11 @@ export WINIP=$(awk '/nameserver / {print $2; exit}' /etc/resolv.conf)
 export WSLIP=$(hostname -I)
 export HTTP_PROXY=http://$WINIP:7890
 export HTTPS_PROXY=$HTTP_PROXY
+git config --global http.proxy http://$WINIP:7890
+echo "Acquire::http::Proxy \"https://$WINIP:7890\";" | sudo tee /etc/apt/apt.conf
 
 # VcXsrv
 export DISPLAY=$WINIP:0.0
+
+# VSCode
+export DONT_PROMPT_WSL_INSTALL
